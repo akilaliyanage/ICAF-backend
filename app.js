@@ -7,11 +7,14 @@ require('dotenv/config')
 
 //Import Routes
 const navBarRoutes = require('./routes/NavBarItemRoutes')
+const newsItemsRoutes = require('./routes/NewsItemRoutes')
 
 //Middleware
 app.use(bodyParser.json())
 app.use(cors())
-app.use('/nav-items',navBarRoutes);
+app.use('/nav-items', navBarRoutes);
+app.use('/news', newsItemsRoutes);
+
 
 
 
