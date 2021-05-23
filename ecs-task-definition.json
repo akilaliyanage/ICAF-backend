@@ -1,7 +1,7 @@
 {
     "family": "af-back-td",
-    "executionRoleArn": "arn:aws:iam::430278725858:role/akila-test",
-    "networkMode": "awsvpc",
+    "executionRoleArn": "arn:aws:iam::430278725858:role/ecsTaskExecutionRole",
+    "networkMode": "default",
     "containerDefinitions": [
         {
             "name": "af-back-td",
