@@ -62,6 +62,7 @@ jobs:
         # push it to ECR so that it can
         # be deployed to ECS.
         echo "${{ steps.login-ecr.outputs.registry }}"
+        aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/i7k0q0b2
         docker build -t af-back .
         docker tag af-back:latest public.ecr.aws/i7k0q0b2/af-back:latest
         docker push public.ecr.aws/i7k0q0b2/af-back:latest
