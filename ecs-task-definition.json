@@ -1,10 +1,10 @@
 {
-    "family": "af-back-td",
+    "family": "af-back",
     "executionRoleArn": "arn:aws:iam::430278725858:role/ecsTaskExecutionRole",
-    "networkMode": "default",
+    "networkMode": "host",
     "containerDefinitions": [
         {
-            "name": "af-back-td",
+            "name": "af-back",
             "image": "public.ecr.aws/i7k0q0b2/af-back:latest",
             "portMappings": [
                 {
@@ -13,7 +13,7 @@
                     "protocol": "tcp"
                 }
             ],
-            "essential" : true
+            "essential": true
         }
     ],
     "requiresCompatibilities": [
