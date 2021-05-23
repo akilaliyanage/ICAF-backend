@@ -74,7 +74,7 @@ jobs:
       with:
         task-definition: ecs-task-definition.json
         container-name: af-back
-        image: ${{ steps.build-image.outputs.image }}
+        image: public.ecr.aws/i7k0q0b2/af-back:latest
 
     - name: Deploy Amazon ECS task definition
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
