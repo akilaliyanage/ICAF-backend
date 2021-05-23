@@ -1,10 +1,10 @@
 {
-    "family": "af-back",
+    "family": "af-back-td",
     "executionRoleArn": "arn:aws:iam::430278725858:role/akila-test",
     "networkMode": "awsvpc",
     "containerDefinitions": [
         {
-            "name": "af-back",
+            "name": "af-back-td",
             "image": "public.ecr.aws/i7k0q0b2/af-back:latest",
             "portMappings": [
                 {
@@ -19,6 +19,6 @@
     "requiresCompatibilities": [
         "EC2"
     ],
-    "cpu": ".25 vCPU",
-    "memory": "0.5GB"
+    "cpu": "256",
+    "memory": "256"
 }
