@@ -55,7 +55,7 @@ jobs:
       id: build-image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: public.ecr.aws/i7k0q0b2/af-back
+        ECR_REPOSITORY: af-back
         IMAGE_TAG: latest
       run: |
         # Build a docker container and
