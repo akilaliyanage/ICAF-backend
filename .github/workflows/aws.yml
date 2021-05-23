@@ -80,6 +80,6 @@ jobs:
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
-        service: af-back-ec2
+        service: af-back
         cluster: AF-cluster
         wait-for-service-stability: true
