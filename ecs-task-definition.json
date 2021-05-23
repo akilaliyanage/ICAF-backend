@@ -1,6 +1,6 @@
 {
     "family": "af-back",
-    "executionRoleArn": "arn:aws:iam::430278725858:role/af-role",
+    "executionRoleArn": "arn:aws:iam::430278725858:role/akila-test",
     "networkMode": "awsvpc",
     "containerDefinitions": [
         {
