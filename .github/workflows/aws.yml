@@ -81,5 +81,5 @@ jobs:
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
         service: af-back
-        cluster: AF-cluster
+        cluster: af-cluster
         wait-for-service-stability: true
