@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "build": "nodemon --watch src/ --exec babel ./src --out-dir ./dist --source-maps --copy-files"
   },
   "repository": {
     "type": "git",
@@ -27,5 +28,8 @@
     "mongoose": "^5.12.5",
     "multer": "^1.4.2",
     "nodemon": "^2.0.7"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0"
   }
 }
