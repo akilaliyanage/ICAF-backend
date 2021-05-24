@@ -1,7 +1,7 @@
 {
     "family": "af-back",
     "executionRoleArn": "arn:aws:iam::430278725858:role/ecsTaskExecutionRole",
-    "networkMode": "bridge",
+    "networkMode": "host",
     "containerDefinitions": [
         {
             "name": "af-back",
