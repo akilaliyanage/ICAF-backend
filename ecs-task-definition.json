@@ -1,0 +1,24 @@
+{
+    "family": "af-back",
+    "executionRoleArn": "arn:aws:iam::430278725858:role/ecsTaskExecutionRole",
+    "networkMode": "bridge",
+    "containerDefinitions": [
+        {
+            "name": "af-back",
+            "image": "public.ecr.aws/i7k0q0b2/af-back:latest",
+            "portMappings": [
+                {
+                    "containerPort": 8000,
+                    "hostPort": 0,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": true
+        }
+    ],
+    "requiresCompatibilities": [
+        "EC2"
+    ],
+    "cpu": "256",
+    "memory": "256"
+}
