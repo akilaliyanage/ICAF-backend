@@ -1,7 +1,7 @@
 {
     "family": "af-back",
     "executionRoleArn": "arn:aws:iam::430278725858:role/ecsTaskExecutionRole",
-    "networkMode": "host",
+    "networkMode": "bridge",
     "containerDefinitions": [
         {
             "name": "af-back",
@@ -9,7 +9,7 @@
             "portMappings": [
                 {
                     "containerPort": 8000,
-                    "hostPort": 8000,
+                    "hostPort": 0,
                     "protocol": "tcp"
                 }
             ],
