@@ -11,12 +11,18 @@ const navBarRoutes = require('./routes/NavBarItemRoutes')
 const newsItemsRoutes = require('./routes/NewsItemRoutes')
 const healthCheck = require('./routes/HelathCheck')
 
+const reviewerRouter = require('./routes/ReviewerRoute')
+
 //Middleware
 app.use(bodyParser.json())
 app.use(cors())
 app.use('/',healthCheck)
 app.use('/nav-items', navBarRoutes);
 app.use('/news', newsItemsRoutes);
+
+app.use('/reviewer', reviewerRouter);
+app.use(express.static('uploads'))
+
 
 
 
