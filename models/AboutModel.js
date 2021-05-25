@@ -5,12 +5,16 @@ const AboutSchema = mongoose.Schema({
         required : true
     },
     CreatedDate : {
-        type : Date,
+        type : String,
         required : true
     },
     latest : {
         type : String,
         required : true,
+    },
+    adminApproved : {
+        type : String,
+        required : true
     }
 })
 
