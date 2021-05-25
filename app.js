@@ -10,8 +10,8 @@ require('dotenv/config')
 const navBarRoutes = require('./routes/NavBarItemRoutes')
 const newsItemsRoutes = require('./routes/NewsItemRoutes')
 const healthCheck = require('./routes/HelathCheck')
-
 const reviewerRouter = require('./routes/ReviewerRoute')
+const AboutRoutes = require('./routes/AboutRoutes')
 
 //Middleware
 app.use(bodyParser.json())
@@ -19,8 +19,9 @@ app.use(cors())
 app.use('/',healthCheck)
 app.use('/nav-items', navBarRoutes);
 app.use('/news', newsItemsRoutes);
-
 app.use('/reviewer', reviewerRouter);
+app.use('/about',AboutRoutes)
+
 app.use(express.static('uploads'))
 
 
