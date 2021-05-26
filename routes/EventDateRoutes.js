@@ -19,7 +19,7 @@ router.get('/',async (req,res) =>{
 
 router.post('/',(req,res) =>{
     const item = new EventDate({
-        date : new Date('2021-05-25T15:34 ').toLocaleString().replace(',',''),
+        date : new Date('2021-05-25T15:34').toLocaleString().replace(',',''),
         latest : 'no',
         adminApproved : 'no'
     })
