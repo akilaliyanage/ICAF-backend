@@ -58,7 +58,8 @@ router.post('/sendToAdmin',async (req,res) =>{
         const noti = new EditorNotificationModel({
             date : new Date().toLocaleString().replace(',',''),
             cacheName : 'aboutEdit',
-            approved : 'no'
+            approved : 'no',
+            data : item
         })
 
         noti.save().then(data =>{
