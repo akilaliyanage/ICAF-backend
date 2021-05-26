@@ -44,6 +44,51 @@ router.route("/").get((req,res) => {
 
 })
 
+router.put("/update/:reviewerID",upload.single("picture"),async (req,res) => {
+
+    const ID = req.params.reviewerID;
+    let updatedReviewer;
+
+    if (!req.file){
+
+        updatedReviewer = {
+            name: req.body.name,
+            username : req.body.username,
+            password:  req.body.password,
+        };
+    }
+    else {
+        updatedReviewer = {
+
+            name: req.body.name,
+            username : req.body.username,
+            password:  req.body.password,
+            profileImage: req.file.originalname
+        };
+    }
+
+    const  updateValue = await  Reviewer.findByIdAndUpdate(ID,updatedReviewer).then(() => {
+
+        res.json({status:200});
+    }).catch((err) => {
+        console.log(err)
+    })
+
+})
+
+
+router.route("/delete/:reviewerID").delete(async (req,res) =>{
+
+    let ID = req.params.reviewerID;
+    await Reviewer.findByIdAndDelete(ID).then(() => {
+        res.json({status:200});
+    }).catch((err) => {
+        console.log(err);
+
+    })
+
+})
+
 
 
 
