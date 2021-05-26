@@ -4,12 +4,12 @@ const NodeCache = require( "node-cache" );
 const myCache = new NodeCache();
 
 //importing models
-const EventDate = require('../models/EventDateModel')
+const EventTopic = require('../models/EventTopic')
 const EditorNotificationModel = require('../models/EditorNotificationModel')
 
 router.get('/',async (req,res) =>{
     try{
-        const items = await EventDate.find({latest : 'yes',adminApproved : 'yes'})
+        const items = await EventTopic.find({latest : 'yes',adminApproved : 'yes'})
         res.json(items)
     }catch(err){
         res.json({message : err})
@@ -18,10 +18,11 @@ router.get('/',async (req,res) =>{
 })
 
 router.post('/',(req,res) =>{
-    const item = new EventDate({
-        date : new Date('2021-05-25T15:34').toLocaleString().replace(',',''),
+    const item = new EventTopic({
+        date : new Date().toLocaleString().replace(',',''),
         latest : 'no',
-        adminApproved : 'no'
+        adminApproved : 'no',
+        topic : req.body.topic
     })
 
     item.save().then(data =>{
@@ -33,29 +34,30 @@ router.post('/',(req,res) =>{
 
 router.post('/sendToAdmin',async (req,res) =>{
 
-    myCache.del( "eventDate" );
-    var value = myCache.get( "eventDate" );
+    myCache.del( "eventTopic" );
+    var value = myCache.get( "eventTopic" );
     console.log(value)
 
     if ( value == undefined ){
         // set new values
 
-        const item = new EventDate({
-            date : new Date(req.body.date).toLocaleString().replace(',',''),
-            latest : req.body.latest,
-            adminApproved : req.body.adminApproved
+        const item = new EventTopic({
+            date : new Date().toLocaleString().replace(',',''),
+            latest : "yes",
+            adminApproved : "no",
+            topic : req.body.topic
         })
 
-        const success = myCache.set( "eventDate", item, 172800000 );
+        const success = myCache.set( "eventTopic", item, 172800000 );
 
        if(success){
            //deleating all the db data relevent to about from notification table
 
-           const rslt = await EditorNotificationModel.deleteMany({cacheName : 'eventDate'})
+           const rslt = await EditorNotificationModel.deleteMany({cacheName : 'eventTopic'})
 
         const noti = new EditorNotificationModel({
             date : new Date().toLocaleString().replace(',',''),
-            cacheName : 'eventDate',
+            cacheName : 'eventTopic',
             approved : 'no',
             data : item
         })
@@ -69,7 +71,7 @@ router.post('/sendToAdmin',async (req,res) =>{
 
     }
 
-    value = myCache.get( "eventDate" );
+    value = myCache.get( "eventTopic" );
     console.log("new value" , value)
 })
 
