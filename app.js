@@ -10,6 +10,11 @@ require('dotenv/config')
 const navBarRoutes = require('./routes/NavBarItemRoutes')
 const newsItemsRoutes = require('./routes/NewsItemRoutes')
 const healthCheck = require('./routes/HelathCheck')
+const reviewerRouter = require('./routes/ReviewerRoute')
+const AboutRoutes = require('./routes/AboutRoutes')
+const EventDateRoutes = require('./routes/EventDateRoutes')
+const EditorNotificatiins = require('./routes/EditorNotificationRoutes')
+const EventTopic = require('./routes/EventTopicRoutes')
 
 //Middleware
 app.use(bodyParser.json())
@@ -17,6 +22,14 @@ app.use(cors())
 app.use('/',healthCheck)
 app.use('/nav-items', navBarRoutes);
 app.use('/news', newsItemsRoutes);
+app.use('/reviewer', reviewerRouter);
+app.use('/about',AboutRoutes)
+app.use('/event-date',EventDateRoutes)
+app.use('/edi-noti',EditorNotificatiins)
+app.use('/topic',EventTopic)
+
+app.use(express.static('uploads'))
+
 
 
 
