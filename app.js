@@ -13,6 +13,7 @@ const healthCheck = require('./routes/HelathCheck')
 const reviewerRouter = require('./routes/ReviewerRoute')
 const AboutRoutes = require('./routes/AboutRoutes')
 const EventDateRoutes = require('./routes/EventDateRoutes')
+const AdminRoute = require('./routes/AdminRoute')
 
 //Middleware
 app.use(bodyParser.json())
@@ -23,6 +24,8 @@ app.use('/news', newsItemsRoutes);
 app.use('/reviewer', reviewerRouter);
 app.use('/about',AboutRoutes)
 app.use('/event-date',EventDateRoutes)
+app.use('/approve',AdminRoute)
+
 
 app.use(express.static('uploads'))
 
