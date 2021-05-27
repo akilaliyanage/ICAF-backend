@@ -11,6 +11,10 @@ const EditorNotification = mongoose.Schema({
     approved: {
         type: String,
         required : true
+    },
+    data : {
+        type : Object,
+        required : true
     }
 })
 

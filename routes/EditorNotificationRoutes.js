@@ -8,7 +8,7 @@ const EditorNotificationModel = require('../models/EditorNotificationModel')
 
 router.get('/',async (req,res) =>{
     try{
-        const items = await EditorNotificationModel.find({approved : 'yes'})
+        const items = await EditorNotificationModel.find({approved : 'no'})
         res.json(items)
     }catch(err){
         res.json({message : err})
