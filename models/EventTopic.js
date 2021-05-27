@@ -15,6 +15,18 @@ const EventTopic = mongoose.Schema({
     topic : {
         type : String,
         required : true
+    },
+    SubTopic : {
+        type : String,
+        required : true
+    },
+    datemonth : {
+        type : String,
+        required : true
+    },
+    venue : {
+        type : String,
+        required : true
     }
 })
 

@@ -22,7 +22,10 @@ router.post('/',(req,res) =>{
         date : new Date().toLocaleString().replace(',',''),
         latest : 'no',
         adminApproved : 'no',
-        topic : req.body.topic
+        topic : req.body.topic,
+        SubTopic : req.body.SubTopic,
+        datemonth : req.body.datemonth,
+        venue : req.body.venue
     })
 
     item.save().then(data =>{
@@ -45,7 +48,10 @@ router.post('/sendToAdmin',async (req,res) =>{
             date : new Date().toLocaleString().replace(',',''),
             latest : "yes",
             adminApproved : "no",
-            topic : req.body.topic
+            topic : req.body.topic,
+            SubTopic : req.body.SubTopic,
+            datemonth : req.body.datemonth,
+            venue : req.body.venue
         })
 
         const success = myCache.set( "eventTopic", item, 172800000 );
