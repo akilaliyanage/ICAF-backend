@@ -1,5 +1,4 @@
 const express = require('express');
-const WorkCoordinator = require('../models/WorkCoordinator');
 const router = express.Router()
 
 //importing models
@@ -7,7 +6,7 @@ const WorkCoordinatorModel = require('../models/WorkCoordinator')
 
 
 //register workshop coordinator
-router.post('/register',upload.single("picture"),async(req,res) => {
+router.post('/register',async(req,res) => {
 
     const workCdn = new WorkCoordinatorModel({
 
