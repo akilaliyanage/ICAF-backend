@@ -15,6 +15,7 @@ const AboutRoutes = require('./routes/AboutRoutes')
 const EventDateRoutes = require('./routes/EventDateRoutes')
 const EditorNotificatiins = require('./routes/EditorNotificationRoutes')
 const EventTopic = require('./routes/EventTopicRoutes')
+const userRoutes = require('./routes/NormalUserRoutes')
 
 //Middleware
 app.use(bodyParser.json())
@@ -27,6 +28,7 @@ app.use('/about',AboutRoutes)
 app.use('/event-date',EventDateRoutes)
 app.use('/edi-noti',EditorNotificatiins)
 app.use('/topic',EventTopic)
+app.use('/n-user',userRoutes)
 
 app.use(express.static('uploads'))
 
