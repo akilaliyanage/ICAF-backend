@@ -1,5 +1,9 @@
 const mongoose = require('mongoose')
-const AboutSchema = mongoose.Schema({
+const QualificatonModel = require('../models/QualificatonModel')
+const MembershipModel = require('../models/MembershipModel')
+const PublicationModel = require('../models/PublicationModel')
+
+const ResearcherModel = mongoose.Schema({
     fName : {
         type : String,
         required : true
@@ -98,7 +102,20 @@ const AboutSchema = mongoose.Schema({
     confPassword: {
         type : String,
         required : true
+    },
+
+    qualifications: {
+        type : [QualificatonModel],
+        required : true
+    },
+    memberships: {
+        type : [MembershipModel],
+        required : true
+    },
+    publications : {
+        type : [PublicationModel],
+        required : true,
     }
 })
 
-module.exports = mongoose.model('ResearcherModel',AboutSchema);
+module.exports = mongoose.model('ResearcherModel',ResearcherModel);
