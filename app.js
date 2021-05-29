@@ -16,6 +16,7 @@ const EventDateRoutes = require('./routes/EventDateRoutes')
 const AdminRoute = require('./routes/AdminRoute')
 const EditorNotificatiins = require('./routes/EditorNotificationRoutes')
 const EventTopic = require('./routes/EventTopicRoutes')
+const userRoutes = require('./routes/NormalUserRoutes')
 
 
 //Middleware
@@ -29,6 +30,7 @@ app.use('/about',AboutRoutes)
 app.use('/event-date',EventDateRoutes)
 app.use('/edi-noti',EditorNotificatiins)
 app.use('/topic',EventTopic)
+app.use('/n-user',userRoutes)
 app.use('/approve',AdminRoute)
 
 
