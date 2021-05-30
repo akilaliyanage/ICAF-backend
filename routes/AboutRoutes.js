@@ -44,8 +44,8 @@ router.post('/sendToAdmin',async (req,res) =>{
         const item = new AboutModel({
             des : req.body.des,
             CreatedDate : new Date().toLocaleString().replace(',',''),
-            latest : req.body.latest,
-            adminApproved : req.body.adminApproved
+            latest : 'yes',
+            adminApproved : 'no'
         })
 
         const success = myCache.set( "aboutEdit", item, 172800000 );

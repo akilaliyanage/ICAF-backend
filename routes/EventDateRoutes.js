@@ -42,8 +42,8 @@ router.post('/sendToAdmin',async (req,res) =>{
 
         const item = new EventDate({
             date : new Date(req.body.date).toLocaleString().replace(',',''),
-            latest : req.body.latest,
-            adminApproved : req.body.adminApproved
+            latest : 'yes',
+            adminApproved : 'no'
         })
 
         const success = myCache.set( "eventDate", item, 172800000 );
