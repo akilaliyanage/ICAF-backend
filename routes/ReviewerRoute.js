@@ -2,6 +2,9 @@ const router = require('express').Router();
 let Reviewer = require("../models/Reviewer");
 const multer = require("multer");
 
+
+const jasonWT = require('jsonwebtoken')
+
 const storage = multer.diskStorage({
     destination:(req,file,callback) => {
         callback(null,"./uploads")
@@ -90,20 +93,19 @@ router.route("/delete/:reviewerID").delete(async (req,res) =>{
 })
 
 
+//reviewer login
+router.post('/workCon-login', async (req,res) =>{
+    const {username, password} = req.body;
 
+    const reviewer = await Reviewer.findOne({username : username}).lean()
 
+    if(await compare(password,reviewer.password)){
 
+        const token = jasonWT.sign({id : reviewer._id, username : reviewer.username})
 
-
-
-
-
-
-
-
-
-
-
+        return res.json({"token":token, "id":reviewer._id, "username":reviewer.username})
+    }
+})
 
 
 
