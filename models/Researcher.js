@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
-const QualificatonModel = require('../models/QualificatonModel')
-const MembershipModel = require('../models/MembershipModel')
-const PublicationModel = require('../models/PublicationModel')
+const QualificatonModel = require('./Qualification').schema
+const MembershipModel = require('./Membership').schema
+const PublicationModel = require('./Publication').schema
 
 const ResearcherModel = mongoose.Schema({
     fName : {
@@ -14,7 +14,7 @@ const ResearcherModel = mongoose.Schema({
     },
     mName : {
         type : String,
-        required : true,
+        required : false,
     },
     NIC: {
         type : String,
@@ -38,15 +38,15 @@ const ResearcherModel = mongoose.Schema({
     },
     pAddL2: {
         type : String,
-        required : true
+        required : false
     },
     pCity: {
         type : String,
-        required : true
+        required : false
     },
     pState : {
         type : String,
-        required : true,
+        required : false,
     },
     pZip: {
         type : String,
@@ -56,23 +56,23 @@ const ResearcherModel = mongoose.Schema({
 
     wPlace : {
         type : String,
-        required : true
+        required : false
     },
     occupation : {
         type : String,
-        required : true
+        required : false
     },
     wEmail : {
         type : String,
-        required : true,
+        required : false,
     },
     wCountryCode: {
         type : String,
-        required : true
+        required : false
     },
     wPhone : {
         type : String,
-        required : true,
+        required : false,
     },
     wAddL1: {
         type : String,
@@ -80,19 +80,19 @@ const ResearcherModel = mongoose.Schema({
     },
     wAddL2: {
         type : String,
-        required : true
+        required : false
     },
     wCity : {
         type : String,
-        required : true,
+        required : false,
     },
     wState: {
         type : String,
-        required : true
+        required : false
     },
     wZip: {
         type : String,
-        required : true
+        required : false
     },
     password : {
         type : String,
@@ -100,6 +100,10 @@ const ResearcherModel = mongoose.Schema({
     },
             
     confPassword: {
+        type : String,
+        required : true
+    },
+    Approved: {
         type : String,
         required : true
     },
