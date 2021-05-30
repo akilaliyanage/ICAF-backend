@@ -16,6 +16,14 @@ const WorkshopSchema = mongoose.Schema({
     dateCreated : {
         type : String,
         required : true
+    },
+    desciption: {
+        type: String,
+        required: true
+    },
+    aproveStatus: {
+        type: String,
+        required : true
     }
 })
 
