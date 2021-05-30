@@ -16,10 +16,6 @@ const WorkCoordinatorSchema = mongoose.Schema({
     password: {
         type: String,
         required : true
-    },
-    aproveStatus: {
-        type: String,
-        required : true
     }
 })
 

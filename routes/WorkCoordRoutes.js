@@ -1,28 +1,51 @@
 const express = require('express');
 const router = express.Router()
 
+const bcrypt = require('bcryptjs')
+const jasonWT = require('jsonwebtoken')
+
 //importing models
-const WorkCoordinatorModel = require('../models/WorkCoordinator')
+const WorkCoordinator = require('../models/WorkCoordinator')
+
+
+//login work conductor
+router.post('/workCon-login', async (req,res) =>{
+    const {email, password} = req.body;
+
+    const workCond = await WorkCoordinator.findOne({email : email}).lean()
+
+    if(await bcrypt.compare(password,workCond.password)){
+        //user is there
+
+        const token = jasonWT.sign({id : workCond._id, email : workCond.email})
+
+        return res.json({"token":token, "id":workCond._id, "email":workCond.email})
+    }
+})
 
 
 //register workshop coordinator
-router.post('/register',async(req,res) => {
+router.post('/workCon-register',async(req,res) => {
 
-    const workCdn = new WorkCoordinatorModel({
+    const {name, studyFeild, email, password} = req.body
 
-        name: req.body.name,
-        studyField: req.body.studyField,
-        email : req.body.email,
-        password:  req.body.password,
-        aproveStatus: "Not approved"
-    });
+    const pwd = await bcrypt.hash(password,10)
 
-    workCdn.save().then(() => {
-        res.json({status:200})
-    }).catch((err) =>{
-        console.log(err);
-    })
+    try{
+            const rslt = await WorkCoordinator.create({
+                name: name,
+                studyField: studyField,
+                email : email,
+                password:  pwd
+            })
 
+            console.log(rslt)
+            res.status(200)
+    }catch(err){
+        console.log(err)
+        res.json({error: err})
+    }
+    console.log(pwd)
 })
 
 //retrieve all workshop coordinators
@@ -36,30 +59,9 @@ router.post('/register',async(req,res) => {
     
 // })
 
-router.get('/pending',async (req,res) =>{
-    try{
-        const data = await WorkCoordinatorModel.find()
-        const array = [];
-        data.forEach(item => {
-            item.aproveStatus == 'Not approved' ? array.push(item) : array.push()
-        });
-        res.json(array)
-    }catch(err){
-        res.json({message : err})
-    }
-    
-})
 
 
-//update status of a coordiantor
-router.patch('/:id',async (req,res) =>{
-    try{
-       const updatedUser =  await WorkCoordinatorModel.updateOne({_id:req.params.id}, {$set : {aproveStatus : "Approved"}})
-       res.json(updatedUser)
-    }catch(err){
-        res.json(err)
-    }
-})
+
 
 
 module.exports = router;
