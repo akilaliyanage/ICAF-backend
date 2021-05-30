@@ -25,7 +25,9 @@ router.post('/create',async(req,res) => {
         title: req.body.title,
         eventDate: req.body.eventDate,
         conductor : req.body.conductor,
-        dateCreated:  req.body.dateCreated
+        dateCreated:  req.body.dateCreated,
+        desciption: req.body.desciption,
+        aproveStatus: "Not approved"
     });
 
     workshop.save().then(() => {
@@ -34,6 +36,32 @@ router.post('/create',async(req,res) => {
         console.log(err);
     })
 
+})
+
+//pending approvals
+router.get('/pending',async (req,res) =>{
+    try{
+        const data = await WorkshopModel.find()
+        const array = [];
+        data.forEach(item => {
+            item.aproveStatus == 'Not approved' ? array.push(item) : array.push()
+        });
+        res.json(array)
+    }catch(err){
+        res.json({message : err})
+    }
+    
+})
+
+
+//update status of a workshop
+router.patch('/:id',async (req,res) =>{
+    try{
+       const updatedWorkshop =  await WorkshopModel.updateOne({_id:req.params.id}, {$set : {aproveStatus : "Approved"}})
+       res.json(updatedWorkshop)
+    }catch(err){
+        res.json(err)
+    }
 })
 
 module.exports = router;

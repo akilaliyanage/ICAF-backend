@@ -18,6 +18,7 @@ const EditorNotificatiins = require('./routes/EditorNotificationRoutes')
 const EventTopic = require('./routes/EventTopicRoutes')
 const userRoutes = require('./routes/NormalUserRoutes')
 const ResearcherRoutes = require('./routes/ResearcherRoutes')
+const workshopConductor = require('./routes/WorkCoordRoutes')
 
 
 //Middleware
@@ -34,6 +35,7 @@ app.use('/topic',EventTopic)
 app.use('/n-user',userRoutes)
 app.use('/approve',AdminRoute)
 app.use('/researcher',ResearcherRoutes)
+app.use('/n-wc',workshopConductor)
 
 
 app.use(express.static('uploads'))
