@@ -4,7 +4,7 @@ const router = express.Router()
 //importing models
 const WorkshopModel = require('../models/Workshop')
 
-
+const today = Date(Date.now());
 
 //get all workshops
 router.route("/").get((req,res) => {
@@ -25,11 +25,13 @@ router.post('/create',async(req,res) => {
         title: req.body.title,
         eventDate: req.body.eventDate,
         conductor : req.body.conductor,
-        dateCreated:  req.body.dateCreated,
+        dateCreated: today,
         desciption: req.body.desciption,
         aproveStatus: "Not approved"
     });
 
+    console.log(workshop)
+    
     workshop.save().then(() => {
         res.json({status:200})
     }).catch((err) =>{
