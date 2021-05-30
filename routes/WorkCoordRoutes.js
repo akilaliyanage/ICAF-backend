@@ -17,9 +17,9 @@ router.post('/workCon-login', async (req,res) =>{
     if(await bcrypt.compare(password,workCond.password)){
         //user is there
 
-        const token = jasonWT.sign({id : workCond._id, username : workCond.email})
+        const token = jasonWT.sign({id : workCond._id, email : workCond.email})
 
-        return res.json({"token":token, "id":workCond._id, "username":workCond.email})
+        return res.json({"token":token, "id":workCond._id, "email":workCond.email})
     }
 })
 
@@ -41,12 +41,11 @@ router.post('/workCon-register',async(req,res) => {
 
             console.log(rslt)
             res.status(200)
-            res.json({"message" : "ok"})
     }catch(err){
         console.log(err)
         res.json({error: err})
     }
-    console.log(pawd)
+    console.log(pwd)
 })
 
 //retrieve all workshop coordinators
