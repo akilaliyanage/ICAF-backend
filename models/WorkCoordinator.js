@@ -5,7 +5,7 @@ const WorkCoordinatorSchema = mongoose.Schema({
         type : String,
         required : true
     },
-    studyFeild : {
+    studyField : {
         type : String,
         required : true
     },

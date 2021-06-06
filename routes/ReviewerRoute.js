@@ -4,7 +4,8 @@ const multer = require("multer");
 const bcrypt = require("bcrypt");
 
 
-const jasonWT = require('jsonwebtoken')
+const jwt = require('jsonwebtoken')
+const config = require('../secret.json')
 
 const storage = multer.diskStorage({
     destination:(req,file,callback) => {
@@ -111,14 +112,14 @@ router.route("/delete/:reviewerID").delete(async (req,res) =>{
 
 
 //reviewer login
-router.post('/workCon-login', async (req,res) =>{
+router.post('/rv-login', async (req,res) =>{
     const {username, password} = req.body;
 
     const reviewer = await Reviewer.findOne({username : username}).lean()
 
-    if(await compare(password,reviewer.password)){
+    if(await bcrypt.compare(password,reviewer.password)){
 
-        const token = jasonWT.sign({id : reviewer._id, username : reviewer.username})
+        const token = jwt.sign({id : reviewer._id, username : reviewer.username},config.SEC_KEY)
 
         return res.json({"token":token, "id":reviewer._id, "username":reviewer.username})
     }

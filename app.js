@@ -20,6 +20,7 @@ const userRoutes = require('./routes/NormalUserRoutes')
 const ResearcherRoutes = require('./routes/ResearcherRoutes')
 const workshopConductor = require('./routes/WorkCoordRoutes')
 const ImageUploadRoutes = require('./routes/ImageUpload')
+const workshop = require('./routes/WorkshopRoutes')
 
 
 //Middleware
@@ -38,6 +39,7 @@ app.use('/approve',AdminRoute)
 app.use('/researcher',ResearcherRoutes)
 app.use('/n-wc',workshopConductor)
 app.use('/image',ImageUploadRoutes)
+app.use('/wShop',workshop)
 
 
 app.use(express.static('uploads'))

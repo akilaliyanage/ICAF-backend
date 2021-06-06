@@ -3,6 +3,7 @@ const router = express.Router()
 
 const bcrypt = require('bcryptjs')
 const jasonWT = require('jsonwebtoken')
+const config = require('../secret.json')
 
 //importing models
 const WorkCoordinator = require('../models/WorkCoordinator')
@@ -17,7 +18,7 @@ router.post('/workCon-login', async (req,res) =>{
     if(await bcrypt.compare(password,workCond.password)){
         //user is there
 
-        const token = jasonWT.sign({id : workCond._id, email : workCond.email})
+        const token = jasonWT.sign({id : workCond._id, email : workCond.email},config.SEC_KEY)
 
         return res.json({"token":token, "id":workCond._id, "email":workCond.email})
     }
@@ -27,7 +28,7 @@ router.post('/workCon-login', async (req,res) =>{
 //register workshop coordinator
 router.post('/workCon-register',async(req,res) => {
 
-    const {name, studyFeild, email, password} = req.body
+    const {name, studyField, email, password} = req.body
 
     const pwd = await bcrypt.hash(password,10)
 
@@ -39,13 +40,13 @@ router.post('/workCon-register',async(req,res) => {
                 password:  pwd
             })
 
-            console.log(rslt)
+            // console.log(rslt)
             res.status(200)
     }catch(err){
         console.log(err)
         res.json({error: err})
     }
-    console.log(pwd)
+    // console.log(pwd)
 })
 
 //retrieve all workshop coordinators
