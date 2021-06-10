@@ -10,6 +10,7 @@ const EditorNotificationModel = require('../models/EditorNotificationModel')
 router.get('/',async (req,res) =>{
     try{
         const items = await EventDate.findOne({adminApproved : 'yes',latest : 'yes'})
+        console.log(items);
         res.json(items)
     }catch(err){
         res.json({message : err})
