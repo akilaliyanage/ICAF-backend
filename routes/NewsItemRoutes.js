@@ -19,7 +19,8 @@ router.post('/',(req,res) =>{
     const item = new NewsItemModel({
         date : new Date(req.body.date),
         url: req.body.url,
-        des: req.body.des
+        des: req.body.des,
+        adminApproved : req.body.adminApproved
     })
 
     item.save().then(data =>{

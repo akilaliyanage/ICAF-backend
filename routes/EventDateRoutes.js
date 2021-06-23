@@ -10,6 +10,7 @@ const EditorNotificationModel = require('../models/EditorNotificationModel')
 router.get('/',async (req,res) =>{
     try{
         const items = await EventDate.findOne({adminApproved : 'yes',latest : 'yes'})
+        console.log(items);
         res.json(items)
     }catch(err){
         res.json({message : err})
@@ -42,8 +43,8 @@ router.post('/sendToAdmin',async (req,res) =>{
 
         const item = new EventDate({
             date : new Date(req.body.date).toLocaleString().replace(',',''),
-            latest : req.body.latest,
-            adminApproved : req.body.adminApproved
+            latest : 'yes',
+            adminApproved : 'no'
         })
 
         const success = myCache.set( "eventDate", item, 172800000 );

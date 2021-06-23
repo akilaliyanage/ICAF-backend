@@ -27,8 +27,9 @@ router.post('/login', async (req,res) =>{
         //user is there
 
         const token = jwt.sign({id : user._id, username : user.username},config.SEC_KEY)
+        console.log(user);
 
-        return res.json({"token":token, "id":user._id, "username":user.username})
+        return res.json({"token":token, "id":user._id, "username":user.username,"proImg" : user.proImg})
     }
 })
 

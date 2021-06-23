@@ -11,6 +11,10 @@ const NewsItemSchema = mongoose.Schema({
     url: {
         type: String,
         required : true
+    },
+    adminApproved: {
+        type: String,
+        required : true
     }
 })
 
