@@ -63,6 +63,8 @@ router.route("/:ID").get((req,res) => {
 
 router.put("/update/:reviewerID",upload.single("picture"),async (req,res) => {
 
+    const salt = await bcrypt.genSalt();
+    const hash = await bcrypt.hash(req.body.password, salt);
     const ID = req.params.reviewerID;
     let updatedReviewer;
 
@@ -71,7 +73,7 @@ router.put("/update/:reviewerID",upload.single("picture"),async (req,res) => {
         updatedReviewer = {
             name: req.body.name,
             username : req.body.username,
-            password:  req.body.password,
+            password:  hash
         };
     }
     else {

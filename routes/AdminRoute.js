@@ -12,7 +12,7 @@ router.post('/date',async (req,res) =>{
     const item = new EventDate({
         date : req.body.date,
         adminApproved : 'yes',
-        latest: 'yes;'
+        latest: 'yes'
     })
 
     await EventDate.updateMany({},{$set:{latest:"no"}});
@@ -33,7 +33,7 @@ router.post('/about',async (req,res) =>{
         des : req.body.about,
         CreatedDate : new Date().toLocaleString().replace(',',''),
         adminApproved : 'yes',
-        latest: 'yes;'
+        latest: 'yes'
     })
 
     await AboutModel.updateMany({},{$set:{latest:"no"}});
@@ -51,13 +51,13 @@ router.post('/topic',async (req,res) =>{
 
     const editID = req.body.editID;
     const item = new EventTopic({
-        topic : req.body.topic,
-        subTopic:req.body.subTopic,
+        topic : req.body.title,
+        SubTopic:req.body.subTopic,
         datemonth:req.body.dateMonth,
-        Venue:req.body.venue,
+        venue:req.body.venue,
         date : new Date().toLocaleString().replace(',',''),
         adminApproved : 'yes',
-        latest: 'yes;'
+        latest: 'yes'
     })
 
     await EventTopic.updateMany({},{$set:{latest:"no"}});

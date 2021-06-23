@@ -17,6 +17,7 @@ const AdminRoute = require('./routes/AdminRoute')
 const EditorNotificatiins = require('./routes/EditorNotificationRoutes')
 const EventTopic = require('./routes/EventTopicRoutes')
 const userRoutes = require('./routes/NormalUserRoutes')
+const EventManageRoute = require('./routes/EventManageRoute')
 
 
 //Middleware
@@ -32,6 +33,7 @@ app.use('/edi-noti',EditorNotificatiins)
 app.use('/topic',EventTopic)
 app.use('/n-user',userRoutes)
 app.use('/approve',AdminRoute)
+app.use('/event-update', EventManageRoute);
 
 
 app.use(express.static('uploads'))
