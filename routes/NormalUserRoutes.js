@@ -45,7 +45,7 @@ router.post('/reg',async (req,res) =>{
    try{
         const rslt = await NormalUser.create({
             username : username,
-            password : pass,
+            password : pass, 
             proImg : proImg,
             email : email
         })
