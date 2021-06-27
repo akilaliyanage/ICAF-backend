@@ -27,7 +27,12 @@ const EventTopic = mongoose.Schema({
     venue : {
         type : String,
         required : true
+    },
+    url : {
+        type : String,
+        required : true
     }
+
 })
 
 module.exports = mongoose.model('EventTopic',EventTopic);

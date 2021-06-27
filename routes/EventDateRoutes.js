@@ -62,7 +62,7 @@ router.post('/sendToAdmin',async (req,res) =>{
         })
 
         noti.save().then(data =>{
-            res.json(data)
+            res.status(201).send({"message" : "success"})
         }).catch(err =>{
             res.json(err)
         })
