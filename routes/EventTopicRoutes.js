@@ -39,7 +39,7 @@ router.post('/sendToAdmin',async (req,res) =>{
 
     myCache.del( "eventTopic" );
     var value = myCache.get( "eventTopic" );
-    console.log(value)
+    console.log(req.body)
 
     if ( value == undefined ){
         // set new values
@@ -51,7 +51,8 @@ router.post('/sendToAdmin',async (req,res) =>{
             topic : req.body.topic,
             SubTopic : req.body.SubTopic,
             datemonth : req.body.datemonth,
-            venue : req.body.venue
+            venue : req.body.venue,
+            url : req.body.url
         })
 
         const success = myCache.set( "eventTopic", item, 172800000 );
@@ -69,7 +70,7 @@ router.post('/sendToAdmin',async (req,res) =>{
         })
 
         noti.save().then(data =>{
-            res.json(data)
+            res.status(201).send({"message" : "success"})
         }).catch(err =>{
             res.json(err)
         })

@@ -20,6 +20,7 @@ router.get('/',async (req,res) =>{
 
 router.post('/login', async (req,res) =>{
     const {username, password} = req.body;
+    console.log(req.body);
 
     const user = await NormalUser.findOne({username : username}).lean()
 
@@ -30,11 +31,14 @@ router.post('/login', async (req,res) =>{
         console.log(user);
 
         return res.json({"token":token, "id":user._id, "username":user.username,"proImg" : user.proImg})
+    }else{
+        res.status(401).send("user not found")
     }
 })
 
 router.post('/reg',async (req,res) =>{
    const {username, password, proImg, email} = req.body
+   
 
    const pass = await bcrypt.hash(password,10)
 
