@@ -17,6 +17,10 @@ const AdminRoute = require('./routes/AdminRoute')
 const EditorNotificatiins = require('./routes/EditorNotificationRoutes')
 const EventTopic = require('./routes/EventTopicRoutes')
 const userRoutes = require('./routes/NormalUserRoutes')
+const ResearcherRoutes = require('./routes/ResearcherRoutes')
+const workshopConductor = require('./routes/WorkCoordRoutes')
+const ImageUploadRoutes = require('./routes/ImageUpload')
+const workshop = require('./routes/WorkshopRoutes')
 const EventManageRoute = require('./routes/EventManageRoute')
 
 
@@ -33,6 +37,10 @@ app.use('/edi-noti',EditorNotificatiins)
 app.use('/topic',EventTopic)
 app.use('/n-user',userRoutes)
 app.use('/approve',AdminRoute)
+app.use('/researcher',ResearcherRoutes)
+app.use('/n-wc',workshopConductor)
+app.use('/image',ImageUploadRoutes)
+app.use('/wShop',workshop)
 app.use('/event-update', EventManageRoute);
 
 

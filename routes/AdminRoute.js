@@ -71,4 +71,28 @@ router.post('/topic',async (req,res) =>{
     });
 })
 
+// router.post('/keynote',async (req,res) =>{
+//
+//     const editID = req.body.editID;
+//     const item = new EventTopic({
+//         topic : req.body.title,
+//         SubTopic:req.body.subTopic,
+//         datemonth:req.body.dateMonth,
+//         venue:req.body.venue,
+//         date : new Date().toLocaleString().replace(',',''),
+//         adminApproved : 'yes',
+//         latest: 'yes'
+//     })
+//
+//     await EventTopic.updateMany({},{$set:{latest:"no"}});
+//
+//     item.save().then(() =>{
+//         EditorNotificationModel.updateOne({_id:editID},{$set:{approved:"yes","data.adminApproved":"yes"}}).then(() =>{
+//             res.json({status: 200})
+//         })
+//     }).catch(err =>{
+//         res.json(err)
+//     });
+// })
+
 module.exports = router;
