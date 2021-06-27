@@ -17,14 +17,19 @@ const WorkshopSchema = mongoose.Schema({
         type : String,
         required : true
     },
-    desciption: {
+    description: {
         type: String,
         required: true
     },
     aproveStatus: {
         type: String,
         required : true
+    },
+    document: {
+        type: String,
+        required : true
     }
+
 })
 
 module.exports = mongoose.model('Workshop',WorkshopSchema);
