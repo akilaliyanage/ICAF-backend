@@ -40,7 +40,7 @@ app.use('/event-date',EventDateRoutes)
 app.use('/edi-noti',EditorNotificatiins)
 app.use('/topic',EventTopic)
 app.use('/n-user',userRoutes)
-app.use('/approve',AdminRoute)
+app.use('/admin',AdminRoute)
 app.use('/researcher',ResearcherRoutes)
 app.use('/n-wc',workshopConductor)
 app.use('/image',ImageUploadRoutes)
@@ -48,7 +48,6 @@ app.use('/wShop',workshop)
 app.use('/keynote',keynote)
 app.use('/price',price)
 app.use('/event-update', EventManageRoute);
-
 app.use('/researchPaper',ResearchPaper)
 app.use('/resrch', research)
 

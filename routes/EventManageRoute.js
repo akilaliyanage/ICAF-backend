@@ -1,5 +1,9 @@
 const router = require('express').Router();
-let EventManage = require("../models/EventManage");
+const EventManage = require("../models/EventManage");
+const Workshop = require('../models/Workshop');
+const Research = require('../models/ResearchPaperModel');
+const Participation = require('../models/NormalUser');
+
 
 
 
@@ -33,6 +37,33 @@ router.route("/").get((req,res) => {
         console.log(err);
     })
 
+})
+
+router.route("/workshop").get((req,res) => {
+
+            Workshop.countDocuments({ aproveStatus:'Approved' },function(err, c) {
+                res.json({count:c});
+            }).catch((err) => {
+                console.log(err);
+            })
+})
+
+router.route("/research").get((req,res) => {
+
+    Research.countDocuments({ isApproved:'Approved' },function(err, c) {
+        res.json({count:c});
+    }).catch((err) => {
+        console.log(err);
+    })
+})
+
+router.route("/participation").get((req,res) => {
+
+    Participation.countDocuments(function(err, c) {
+        res.json({count:c});
+    }).catch((err) => {
+        console.log(err);
+    })
 })
 
 module.exports = router;
