@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/akilaliyanage/ICAF-backend#readme",
   "dependencies": {
+    "@google-cloud/storage": "^5.8.5",
     "aws-sdk": "^2.922.0",
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
@@ -28,6 +29,8 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
+    "firebase": "^8.6.8",
+    "firebase-admin": "^9.10.0",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.6.6",
     "mongoose": "^5.12.5",
