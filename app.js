@@ -23,6 +23,7 @@ const ImageUploadRoutes = require('./routes/ImageUpload')
 const workshop = require('./routes/WorkshopRoutes')
 const keynote = require('./routes/KeynoteSpeak')
 const ResearchPaper = require('./routes/ResearchPaperRoute')
+const research = require('./routes/ResearchRoutes')
 
 
 //Middleware
@@ -44,6 +45,7 @@ app.use('/image',ImageUploadRoutes)
 app.use('/wShop',workshop)
 app.use('/keynote',keynote)
 app.use('/researchPaper',ResearchPaper)
+app.use('/resrch', research)
 
 app.use(express.static('uploads'))
 

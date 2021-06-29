@@ -22,7 +22,6 @@ router.route("/").get((req,res) => {
     }).catch((err) => {
         console.log(err);
     })
-
 })
 
 //create a workshop
@@ -36,7 +35,7 @@ router.post('/create',async(req,res) => {
         dateCreated: tDate,
         description: req.body.description,
         aproveStatus: "Not approved",
-        document:"test"
+        document:req.body.document
     });
 
     // console.log(workshop)
