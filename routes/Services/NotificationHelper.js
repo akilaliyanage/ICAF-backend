@@ -5,17 +5,20 @@ const Notification = require('../../models/ApproveNotification');
 
     const saveNotification = async (type , ItemId , userId , status) =>{
         
+            console.log('saveNotification calledn : ' , userId)
             const notification = new Notification();
             notification.type = type;
             notification.itemId = ItemId;
             notification.userId = userId;
             notification.Status = status;
-            notification.save()
+            console.log('Notification : ' , notification)
+            await notification.save()
             .then((data) => {
-                res.status(200).send({data: data})
+                console.log('Notification add' , data);
+                return data;
             })
             .catch((err) => {
-                res.status(500).send({error: err.message})
+                return null;
             })
     }
 
@@ -24,7 +27,8 @@ const Notification = require('../../models/ApproveNotification');
         
             let ID = notificationId;
             await Notification.findByIdAndDelete(ID).then(() => {
-                res.json({status:200});
+                console.log('Notification Deleted');
+                return true;
             }).catch((err) => {
                 console.log(err);
             })
