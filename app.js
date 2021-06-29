@@ -22,6 +22,7 @@ const workshopConductor = require('./routes/WorkCoordRoutes')
 const ImageUploadRoutes = require('./routes/ImageUpload')
 const workshop = require('./routes/WorkshopRoutes')
 const keynote = require('./routes/KeynoteSpeak')
+const ResearchPaper = require('./routes/ResearchPaperRoute')
 
 
 //Middleware
@@ -42,6 +43,7 @@ app.use('/n-wc',workshopConductor)
 app.use('/image',ImageUploadRoutes)
 app.use('/wShop',workshop)
 app.use('/keynote',keynote)
+app.use('/researchPaper',ResearchPaper)
 
 app.use(express.static('uploads'))
 
