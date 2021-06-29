@@ -3,7 +3,9 @@ const router = express.Router()
 
 const ResearchPaperModel = require('../models/ResearchPaperModel')
 
-router.post('/',(req,res) =>{
+const Notification = require('./Services/NotificationHelper');
+
+router.post('/',async (req,res) =>{
 
     const researchPaper = new ResearchPaperModel({
 
@@ -19,12 +21,14 @@ router.post('/',(req,res) =>{
             Institute : req.body.Institute
     })
 
-    researchPaper.save().then(data =>{
-        console.log('Successfully saved')
-        res.json(data)
+    await researchPaper.save().then(async (data) =>{
+        console.log('Successfully saved' , data);
+        var addNotification = await Notification.saveNotification("Research-Paper" , data._id , data.researcherId , 'pending')
+        data.Noti = addNotification;
+        res.status(200).send({data: data})
     }).catch(err =>{
         console.log(err)
-        res.json(err)
+        res.status(500).send({error: err.message})
     })
 })
 
