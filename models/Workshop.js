@@ -10,8 +10,10 @@ const WorkshopSchema = mongoose.Schema({
         required : true
     },
     conductor : {
-        type : String,
-        required : true
+        type: mongoose.Schema.Types.ObjectId, 
+        required: true,
+        ref: 'WorkCoordinator' 
+        
     },
     dateCreated : {
         type : String,
