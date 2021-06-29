@@ -22,6 +22,7 @@ const workshopConductor = require('./routes/WorkCoordRoutes')
 const ImageUploadRoutes = require('./routes/ImageUpload')
 const workshop = require('./routes/WorkshopRoutes')
 const keynote = require('./routes/KeynoteSpeak')
+const EventManageRoute = require('./routes/EventManageRoute')
 const ResearchPaper = require('./routes/ResearchPaperRoute')
 
 
@@ -43,6 +44,8 @@ app.use('/n-wc',workshopConductor)
 app.use('/image',ImageUploadRoutes)
 app.use('/wShop',workshop)
 app.use('/keynote',keynote)
+app.use('/event-update', EventManageRoute);
+
 app.use('/researchPaper',ResearchPaper)
 
 app.use(express.static('uploads'))
