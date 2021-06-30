@@ -32,4 +32,16 @@ router.post('/',async (req,res) =>{
     })
 })
 
+router.get('/:id',async (req,res) =>{
+    if(req.params && req.params.id){
+        await researchPaper.findById(req.params.id)
+        .then((data) => {
+            res.status(200).send({data: data})
+        })
+        .catch((err) => {
+            res.status(500).send({error: err.message})
+        });
+    }
+})
+
 module.exports = router;

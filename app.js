@@ -28,6 +28,7 @@ const ResearchPaper = require('./routes/ResearchPaperRoute')
 const Payment = require('./routes/Payment')
 const Editor = require('./routes/EditorRouted')
 const research = require('./routes/ResearchRoutes')
+const PresentationRoutes = require('./routes/PresentationRoutes')
 
 
 //Middleware
