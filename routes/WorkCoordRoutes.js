@@ -50,15 +50,16 @@ router.post('/workCon-register',async(req,res) => {
 })
 
 //retrieve all workshop coordinators
-// router.get('/pending',async (req,res) =>{
-//     try{
-//         const data = await data.find()
-//         res.json(data)
-//     }catch(err){
-//         res.json({message : err})
-//     }
+
+router.route("/all").get((req,res) => {
     
-// })
+    WorkCoordinator.find()
+    .then( (conductors) =>{
+        res.json(conductors);
+    }).catch((err) => {
+        console.log(err);
+    })
+})
 
 
 
