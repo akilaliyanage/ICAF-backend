@@ -27,6 +27,7 @@ const EventManageRoute = require('./routes/EventManageRoute')
 const ResearchPaper = require('./routes/ResearchPaperRoute')
 const Payment = require('./routes/Payment')
 const Editor = require('./routes/EditorRouted')
+const research = require('./routes/ResearchRoutes')
 
 
 //Middleware
@@ -41,7 +42,7 @@ app.use('/event-date',EventDateRoutes)
 app.use('/edi-noti',EditorNotificatiins)
 app.use('/topic',EventTopic)
 app.use('/n-user',userRoutes)
-app.use('/approve',AdminRoute)
+app.use('/admin',AdminRoute)
 app.use('/researcher',ResearcherRoutes)
 app.use('/n-wc',workshopConductor)
 app.use('/image',ImageUploadRoutes)
@@ -52,6 +53,8 @@ app.use('/event-update', EventManageRoute);
 app.use('/researchPaper',ResearchPaper)
 app.use('/payment',Payment)
 app.use('/editor',Editor)
+app.use('/resrch', research)
+
 app.use(express.static('uploads'))
 
 

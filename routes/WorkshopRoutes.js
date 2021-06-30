@@ -22,7 +22,22 @@ router.route("/").get((req,res) => {
     }).catch((err) => {
         console.log(err);
     })
+})
 
+//workshops for a user
+router.get('/myWorkshops/:id',async (req,res) =>{
+    const id = req.params.id;
+    try{
+        const data = await WorkshopModel.find()
+        const array = [];
+        data.forEach(item => {
+            item.conductor == id ? array.push(item) : array.push()
+        });
+        res.json(array)
+    }catch(err){
+        res.json({message : err})
+    }
+    
 })
 
 //create a workshop
@@ -36,7 +51,7 @@ router.post('/create',async(req,res) => {
         dateCreated: tDate,
         description: req.body.description,
         aproveStatus: "Not approved",
-        document:"test"
+        document:req.body.document
     });
 
     // console.log(workshop)
@@ -80,20 +95,26 @@ router.get('/approved',async (req,res) =>{
 })
 
 //update status of a workshop as approved
-router.patch('/approve/:id',async (req,res) =>{
+router.get('/approve/:id',async (req,res) =>{
     try{
        const updatedWorkshop =  await WorkshopModel.updateOne({_id:req.params.id}, {$set : {aproveStatus : "Approved"}})
-       res.json(updatedWorkshop)
+       res.status(200).send({'message': 'success'})
+
+       if(status == 200){
+           
+       }
+
     }catch(err){
         res.json(err)
     }
 })
 
+
 //update status of a workshop as declined
-router.patch('/decline/:id',async (req,res) =>{
+router.get('/decline/:id',async (req,res) =>{
     try{
        const updatedWorkshop =  await WorkshopModel.updateOne({_id:req.params.id}, {$set : {aproveStatus : "Declined"}})
-       res.json(updatedWorkshop)
+       res.status(200).send({'message': 'success'})
     }catch(err){
         res.json(err)
     }
