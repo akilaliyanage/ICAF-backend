@@ -26,6 +26,7 @@ const price = require('./routes/PriceRoutes')
 const EventManageRoute = require('./routes/EventManageRoute')
 const ResearchPaper = require('./routes/ResearchPaperRoute')
 const research = require('./routes/ResearchRoutes')
+const PresentationRoutes = require('./routes/PresentationRoutes')
 
 
 //Middleware
