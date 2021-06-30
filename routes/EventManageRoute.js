@@ -66,4 +66,16 @@ router.route("/participation").get((req,res) => {
     })
 })
 
+router.route("/research-papers").get((req,res) => {
+
+    Research.find().then( (result) =>{
+
+        res.json(result);
+
+    }).catch((err) => {
+        console.log(err);
+    })
+
+})
+
 module.exports = router;
