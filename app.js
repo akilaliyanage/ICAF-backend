@@ -25,6 +25,8 @@ const keynote = require('./routes/KeynoteSpeak')
 const price = require('./routes/PriceRoutes')
 const EventManageRoute = require('./routes/EventManageRoute')
 const ResearchPaper = require('./routes/ResearchPaperRoute')
+const Payment = require('./routes/Payment')
+const Editor = require('./routes/EditorRouted')
 
 
 //Middleware
@@ -47,9 +49,9 @@ app.use('/wShop',workshop)
 app.use('/keynote',keynote)
 app.use('/price',price)
 app.use('/event-update', EventManageRoute);
-
 app.use('/researchPaper',ResearchPaper)
-
+app.use('/payment',Payment)
+app.use('/editor',Editor)
 app.use(express.static('uploads'))
 
 
