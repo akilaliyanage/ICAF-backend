@@ -46,20 +46,20 @@ router.get('/approved',async (req,res) =>{
 })
 
 //update status of a workshop as approved
-router.patch('/approve/:id',async (req,res) =>{
+router.get('/approve/:id',async (req,res) =>{
     try{
-       const updatedWorkshop =  await WorkshopModel.updateOne({_id:req.params.id}, {$set : {isApproved : "Approved"}})
-       res.json(updatedWorkshop)
+       const updatedResearch =  await ResearchModel.updateOne({_id:req.params.id}, {$set : {isApproved : "Approved"}})
+       res.status(200).send({'message': 'success'})
     }catch(err){
         res.json(err)
     }
 })
 
 //update status of a workshop as declined
-router.patch('/decline/:id',async (req,res) =>{
+router.get('/decline/:id',async (req,res) =>{
     try{
-       const updatedWorkshop =  await WorkshopModel.updateOne({_id:req.params.id}, {$set : {aproveStatus : "Declined"}})
-       res.json(updatedWorkshop)
+       const updatedResearch =  await ResearchModel.updateOne({_id:req.params.id}, {$set : {isApproved : "Declined"}})
+       res.status(200).send({'message': 'success'})
     }catch(err){
         res.json(err)
     }
